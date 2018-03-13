@@ -25,7 +25,7 @@ Read more about how to install magento extensions [here](http://devdocs.magento.
 
 ## Configurations
 
-Decder payments settings located at `Stores -> Configurations -> Sales -> Payment Methods -> Decred Payments`
+Decred payment method settings located at `Stores -> Configurations -> Sales -> Payment Methods -> Decred Payments`
 
 ### Enabled
 

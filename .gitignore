@@ -1,1 +1,5 @@
+# composer packages
 vendor
+
+# PHPStorm configs
+.idea
