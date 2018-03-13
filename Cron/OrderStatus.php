@@ -49,8 +49,10 @@ class OrderStatus
                 ->getDataClient()
                 ->getAddressRaw($address, $timestamp);
 
-            foreach ($transactions as $transaction) {
-                $this->processTransaction($decredOder, $transaction);
+            if (is_array($transactions)) {
+                foreach ($transactions as $transaction) {
+                    $this->processTransaction($decredOder, $transaction);
+                }
             }
         }
     }
