@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Decred admin configuration
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+           <group id="decred_payments" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Decred Payments</label>
+				<field id="active" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="1" translate="label" type="select">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+               <field id="title" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="text">
+                   <label>Title</label>
+               </field>
+               <field id="master_public_key" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="text">
+                   <label>Master public key (m/44'/42'/0')</label>
+               </field>
+               <field id="confirmations_to_wait" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="text">
+                   <label>Confirmations to wait</label>
+               </field>
+               <field id="show_refund_address" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="select">
+                   <label>Show refund address?</label>
+                   <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+               </field>
+				<field id="is_refund_optional" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="2" translate="label" type="select">
+					<label>Make refund address optional?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+        </section>
+    </system>
+</config>

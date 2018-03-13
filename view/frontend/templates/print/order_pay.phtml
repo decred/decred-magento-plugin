@@ -1,0 +1,32 @@
+<?php
+/** @var Decred\Payments\Block\OrderPay $block */
+/** @var Magento\Sales\Model\Order $order */
+$order = $block->getOrder();
+/** @var Decred\Payments\Model\Order $decredOrder */
+$decredOrder = $block->getDecredOrder();
+/** @var Decred\Payments\Helper\Data $helper */
+$helper = $block->getHelper();
+?>
+<?php if ($decredOrder->getId()) : ?>
+
+    <div class="block">
+        <div class="block-title">Decred payment details</div>
+        <div class="block-content">
+            <dl>
+                <dt>Amount</dt>
+                <dd><?= $decredOrder->getAmount() ?></dd>
+                <dt>Address</dt>
+                <dd><?= $decredOrder->getAddress() ?></dd>
+                <dt>Status</dt>
+                <dd><?= $decredOrder->getStatusText() ?></dd>
+                <dt>Txid</dt>
+                <dd><?= $decredOrder->getTxid() ?></dd>
+                <dt>Confirmations</dt>
+                <dd><?= $decredOrder->getConfirmations() ?></dd>
+                <dt>Refund</dt>
+                <dd><?= $decredOrder->getRefundAddress() ?></dd>
+            </dl>
+        </div>
+    </div>
+
+<?php endif; ?>

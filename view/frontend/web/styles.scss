@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+.decred-icon_copy {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4gIaAB4NeMy30AAAAJNJREFUOMvNkrENgzAQRd9ZDEFGsNiCDdJmA3d4kaRjAvZgDMQEMIWPhjSR7WBBwWttv/M/fSGC9foEeqAmz4riqsRhH4TX/JYxZ2g6bYMwkPiJchDrVQ0XUP3mnz4ixZKj+XMYoD4j+EpOc3/J2nTa/nu831nijVVcEAbr9ZGTBFgEXFE7L9lJaqApzR9vbGn+CBsRQzp+ZpYkgAAAAABJRU5ErkJggg==');
+  display: block;
+  width: 17px;
+  height: 16px;
+}
+
+$dark: #0c1e3e;
+$dark-light: #596d81;
+$blue: #2f74fb;
+$green: #2dd6a1;
+$red: #fd714b;
+
+.decred-price {
+  font-family: "Inconsolata", monospace;
+  font-size: 0;
+
+  & .decred-amount {
+    &__big {
+      font-size: 24px;
+    }
+    &__small {
+      font-size: 18px;
+    }
+  }
+}
+
+.decred-pay {
+  font-family: 'Source Sans Pro', sans-serif;
+  box-shadow: 0 1px 5px 0.1px rgba(0, 0, 0, 0.1);
+  font-size: 22px;
+  color: $dark-light;
+  max-width: 960px;
+  width: 100%;
+
+  background-color: #ffffff;
+  margin-bottom: 20px;
+
+  .decred-pay-header {
+    height: 100px;
+
+    img {
+      margin: 36px 0 36px 35px;
+    }
+  }
+
+  .decred-pay-content {
+    padding: 0 35px 35px 35px;
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  .decred-pay-qrcode {
+    display: inline-block;
+    float: left;
+  }
+
+  .decred-pay-info {
+    display: inline-block;
+    float: left;
+    padding-left: 35px;
+  }
+
+  .decred-pay-status {
+    cursor: auto;
+    border: 1px solid $blue;
+    border-radius: 4px;
+    float: right;
+
+    height: 40px;
+    margin-top: -5px;
+    margin-left: 120px;
+
+    color: $blue;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    background-color: #ffffff;
+
+    &__pending {}
+    &__processing {
+      border-color: $green;
+      color: $green;
+      margin-left: 60px;
+    }
+    &__paid {
+      border-color: $green;
+      color: $green;
+      margin-left: 100px;
+    }
+
+    .decred-icon_confirmed {
+      margin-right: 8px;
+    }
+
+    .decred-icon_dots {
+      float: left;
+      display: inline-block;
+      margin: -4px 8px 0 0;
+    }
+  }
+
+  .decred-pay-row {
+
+    label {
+      color: $dark;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .decred-pay-info-field {
+      position: relative;
+      font-family: "Inconsolata", monospace;
+      font-size: 16px;
+      background-color: #ffffff;
+      white-space: normal;
+      min-height: 25px;
+      padding-right: 30px;
+      margin: 0;
+
+      .decred-icon_copy {
+        cursor: pointer;
+
+        position: absolute;
+        top: 12px;
+        right: 10px;
+      }
+    }
+
+    & + .decred-pay-row {
+      margin-top: 8px;
+    }
+
+    &__amount {
+      .decred-pay-info-field {
+        padding-top: 6px;
+        min-height: 30px;
+        .decred-icon_copy {
+          top: 15px;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  &__medium, &__small {
+    .decred-pay-info {
+      display: block;
+      padding-left: 0;
+      width: 100%;
+    }
+    .decred-pay-qrcode {
+      display: block;
+      float: none;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+
+      img {
+        display: inline-block !important;
+      }
+    }
+  }
+  &__small {
+    .decred-pay-header img {
+      margin-left: 20px;
+    }
+    .decred-pay-content {
+      padding: 0 20px 20px 20px;
+    }
+    .decred-pay-row_head > span {
+      display: block;
+    }
+    .decred-pay-status {
+      display: block;
+      float: left;
+      margin: 10px 0;
+    }
+  }
+}
+
+.decred-plugin {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $dark;
+
+  & .payment-method-title {
+    cursor: pointer;
+
+    label {
+      cursor: pointer;
+    }
+
+    input[type="radio"], input[type="radio"]+label img, .decred-label {
+      vertical-align: middle;
+    }
+  }
+
+  & p {
+    font-size: 14px;
+    color: $dark-light;
+  }
+
+  .decred-label {
+    float: right;
+  }
+
+  .decred-refund-address-wrapper {
+    .decred-error {
+      color: $red;
+      font-size: 14px;
+    }
+
+    .decred-error-wrapper {
+      margin-top: 9px;
+      display: none;
+      &.show {
+        display: block;
+      }
+    }
+
+    & label {
+      margin-bottom: 11px;
+      font-size: 18px;
+      font-weight: normal;
+    }
+  }
+
+  .decred-place-order {
+    width: 153px;
+    height: 51px;
+    border-radius: 5px;
+    background-color: $blue !important;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+  }
+}

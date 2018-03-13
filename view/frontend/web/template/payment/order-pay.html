@@ -1,0 +1,53 @@
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<div class="decred-pay" data-bind="attr: { class: componentClasses() }">
+    <div class="decred-pay-header">
+        <img height="28" width="153" data-bind="attr: { src: require.toUrl('Decred_Payments/images/decred_logo.png') }" />
+    </div>
+    <div class="decred-pay-content">
+        <div class="decred-pay-qrcode" id="decred-qrcode"></div>
+        <div class="decred-pay-info">
+            <div class="decred-pay-row decred-pay-row_head">
+                <span>Send exact amount to the address:</span>
+                <!-- ko if: data().status === 1 -->
+                <button class="decred-pay-status decred-pay-status__paid"><i class="decred-icon_confirmed">&#10004;</i>Confirmed</button>
+                <!-- /ko -->
+                <!-- ko if: data().status === 2 -->
+                <button class="decred-pay-status decred-pay-status__processing"><i class="decred-icon_dots">...</i>Processing (<span data-bind="text: data().confirmations"></span>/<span data-bind="text: waitConfirmations"></span>)</button>
+                <!-- /ko -->
+                <!-- ko if: data().status === 3 -->
+                <button class="decred-pay-status decred-pay-status__pending"><i class="decred-icon_dots">...</i>Pending</button>
+                <!-- /ko -->
+            </div>
+            <div class="decred-pay-row decred-pay-row__amount">
+                <label>Amount</label>
+                <pre class="decred-pay-info-field">
+                    <span class="decred-price">
+                        <span class="decred-amount decred-amount__big" data-bind="text: displayDecredAmountBig"></span>
+                        <span class="decred-amount decred-amount__small">
+                            <span data-bind="text: displayDecredAmountSmall"></span><span>&nbsp;DCR</span>
+                        </span>
+                    </span>
+                    <i class="decred-icon_copy" data-bind="click: copyAmount"></i>
+                </pre>
+            </div>
+            <div class="decred-pay-row decred-pay-row__address">
+                <label>Address</label>
+                <pre class="decred-pay-info-field">
+                    <span data-bind="text: address"></span>
+                    <i class="decred-icon_copy" data-bind="click: copyAddress"></i>
+                </pre>
+            </div>
+            <!-- ko if: data().txid -->
+            <div class="decred-pay-row decred-pay-row__txid">
+                <label>Txid</label>
+                <pre class="decred-pay-info-field">
+                    <span data-bind="text: data().txid"></span>
+                    <i class="decred-icon_copy" data-bind="click: copyTxid"></i>
+                </pre>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

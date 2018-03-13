@@ -1,0 +1,47 @@
+<?php
+/** @var Decred\Payments\Block\OrderPay $block */
+/** @var Magento\Sales\Model\Order $order */
+$order = $block->getOrder();
+/** @var Decred\Payments\Model\Order $decredOrder */
+$decredOrder = $block->getDecredOrder();
+/** @var Decred\Payments\Helper\Data $helper */
+$helper = $block->getHelper();
+?>
+<?php if ($decredOrder->getId()) : ?>
+
+    <div id="decred-order-pay" data-bind="scope:'decred-order-pay'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+        {
+            "#decred-order-pay": {
+                "Magento_Ui/js/core/app": {
+                   "components": {
+                        "decred-order-pay": {
+                            "component": "Decred_Payments/js/orderPay",
+                            "config": {
+                                "orderId": "<?= /* @escapeNotVerified */ $order->getIncrementId() ?>",
+                                "status": <?= /* @escapeNotVerified */ $decredOrder->getStatus() ?>,
+                                "address": "<?= /* @escapeNotVerified */ $decredOrder->getAddress() ?>",
+                                "amount": "<?= /* @escapeNotVerified */ $decredOrder->getAmount() ?>",
+                                "txid": "<?= /* @escapeNotVerified */ $decredOrder->getTxid() ?>",
+                                "confirmations": "<?= /* @escapeNotVerified */ $decredOrder->getConfirmations() ?>",
+                                "waitConfirmations": "<?= /* @escapeNotVerified */ $helper->getConfirmationsToWait() ?>"
+                            },
+                            "children": {
+                                "errors": {
+                                    "component": "Magento_Ui/js/view/messages",
+                                    "sortOrder": 0,
+                                    "displayArea": "messages",
+                                    "config": {
+                                        "autoHideTimeOut": -1
+                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="decred_payments_default" xsi:type="object">Decred\Payments\Model\Ui\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DecredPaymentsGatewayConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Decred\Payments\Model\Payment::CODE</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Decred\Payments\Model\Payment">
+        <arguments>
+            <argument name="code" xsi:type="const">Decred\Payments\Model\Payment::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Decred\Payments\Block\Order\PaymentInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">DecredPaymentsGatewayValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">DecredPaymentsGatewayCommandPool</argument>
+        </arguments>
+    </type>
+
+    <type name="Decred\Payments\Commands\OrderCommand" />
+
+    <virtualType name="DecredPaymentsGatewayValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">DecredPaymentsGatewayConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="DecredPaymentsGatewayConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">DecredPaymentsGatewayConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="DecredPaymentsGatewayCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="order" xsi:type="string">Decred\Payments\Gateway\OrderCommand</item>
+                <item name="capture" xsi:type="string">Magento\Payment\Gateway\Command\NullCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+</config>

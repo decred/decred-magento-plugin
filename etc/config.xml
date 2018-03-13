@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Decred module dependency
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <decred_payments>
+                <active>0</active>
+                <title>Decred</title>
+                <model>Decred\Payments\Model\Payment</model>
+                <order_status>pending_payment</order_status>
+                <payment_action>order</payment_action>
+                <is_gateway>0</is_gateway>
+                <is_offline>1</is_offline>
+                <can_use_checkout>1</can_use_checkout>
+                <can_order>1</can_order>
+                <can_authorize>0</can_authorize>
+                <can_capture>1</can_capture>
+                <can_refund>0</can_refund>
+                <can_void>0</can_void>
+                <can_cancel>1</can_cancel>
+
+                <confirmations_to_wait>3</confirmations_to_wait>
+                <show_refund_address>1</show_refund_address>
+                <is_refund_optional>1</is_refund_optional>
+            </decred_payments>
+        </payment>
+    </default>
+</config>
